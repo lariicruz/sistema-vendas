@@ -3,13 +3,13 @@ package com.nelioalves.mc;
 import java.util.Arrays;
 
 import com.nelioalves.mc.domain.Produto;
-import com.nelioalves.mc.resources.ProdutoRepository;
+import com.nelioalves.mc.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.nelioalves.mc.domain.Categoria;
-import com.nelioalves.mc.resources.CategoriaRepository;
+import com.nelioalves.mc.repository.CategoriaRepository;
 
 @SpringBootApplication
 public class CursomcApplication implements CommandLineRunner {

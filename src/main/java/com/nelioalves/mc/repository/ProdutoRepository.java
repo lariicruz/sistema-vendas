@@ -1,4 +1,4 @@
-package com.nelioalves.mc.resources;
+package com.nelioalves.mc.repository;
 
 import com.nelioalves.mc.domain.Produto;
 import org.springframework.data.jpa.repository.JpaRepository;

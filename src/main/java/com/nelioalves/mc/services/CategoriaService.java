@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.nelioalves.mc.domain.Categoria;
-import com.nelioalves.mc.resources.CategoriaRepository;
+import com.nelioalves.mc.repository.CategoriaRepository;
 
 @Service
 public class CategoriaService {
