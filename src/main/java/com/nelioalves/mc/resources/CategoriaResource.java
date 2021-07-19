@@ -8,20 +8,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nelioalves.mc.domain.Categoria;
-import com.nelioalves.mc.services.CategoriaService;
+import com.nelioalves.mc.services.CategoryService;
 
 @RestController
 @RequestMapping(value = "/categorias")
 public class CategoriaResource {
 	@Autowired
-	private CategoriaService service;
+	private CategoryService service;
 
 	@GetMapping(value= "/{id}")
 	public ResponseEntity<?> find(@PathVariable Integer id) {
 		Categoria obj = service.buscar(id);
 		return ResponseEntity.ok().body(obj);
-		
+
 	}
-	
+
 }
 
