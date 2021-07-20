@@ -4,9 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 public class Produto implements Serializable {
@@ -59,6 +57,16 @@ public class Produto implements Serializable {
         this.categorias = categorias;
     }
 
+    public Set<ItemPedido> getItens() {
+        return itens;
+    }
+
+    public void setItens(Set<ItemPedido> itens) {
+        this.itens = itens;
+    }
+
+    @OneToMany(mappedBy = "id.produto")
+    private Set<ItemPedido> itens = new HashSet<>();
     public Produto() {
 
     }
@@ -68,7 +76,13 @@ public class Produto implements Serializable {
         this.nome = nome;
         this.preco = preco;
     }
-
+    public List<Pedido>getPedidos() {
+        List<Pedido> lista = new ArrayList<>();
+        for (ItemPedido x : itens) {
+            lista.add(x.getPedido());
+        }
+        return lista;
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
