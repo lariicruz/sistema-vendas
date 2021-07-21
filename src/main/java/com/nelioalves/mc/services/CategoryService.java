@@ -14,7 +14,7 @@ public class CategoryService {
 	@Autowired
 	private CategoriaRepository repo;
 
-	public Categoria buscar(Integer id) {
+	public Categoria find(Integer id) {
 		Categoria obj = repo.findById(id).orElse(null);
 
 		if (obj == null)  {
@@ -24,6 +24,11 @@ public class CategoryService {
 	}
 	public Categoria insert(Categoria obj) {
 		obj.setId(null);
+		return repo.save(obj);
+	}
+
+	public Categoria update(Categoria obj) {
+		find(obj.getId());
 		return repo.save(obj);
 	}
 }
