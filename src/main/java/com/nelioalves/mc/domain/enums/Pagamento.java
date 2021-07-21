@@ -1,5 +1,6 @@
 package com.nelioalves.mc.domain.enums;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.nelioalves.mc.domain.Cliente;
 import com.nelioalves.mc.domain.Endereco;
 import com.nelioalves.mc.domain.Pedido;
@@ -18,6 +19,7 @@ public abstract class Pagamento implements Serializable {
     private Integer id;
     private Integer estado;
 
+    @JsonBackReference
     @OneToOne
     @JoinColumn(name="pedido_id")
     @MapsId
@@ -85,5 +87,4 @@ public abstract class Pagamento implements Serializable {
 
 
 }
-
 

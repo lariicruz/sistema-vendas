@@ -1,5 +1,7 @@
 package com.nelioalves.mc.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.nelioalves.mc.domain.enums.Pagamento;
 
 import javax.persistence.*;
@@ -17,22 +19,28 @@ public class Pedido implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @JsonFormat(pattern="dd/MM/yyyy hh:mm")
     private Date instante;
 
-    @OneToOne(cascade= CascadeType.ALL, mappedBy="pedido")
+
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "pedido")
     private Pagamento pagamento;
 
+
     @ManyToOne
-    @JoinColumn(name="cliente_id")
+    @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
     @ManyToOne
-    @JoinColumn(name="endereco_de_entrega_id")
+    @JoinColumn(name = "endereco_de_entrega_id")
     private Endereco enderecoDeEntrega;
 
-    @OneToMany(mappedBy = "id.pedido")
+    @OneToMany(mappedBy="id.pedido")
     private Set<ItemPedido> itens = new HashSet<>();
-    public Pedido() {}
+
+    public Pedido() {
+    }
 
     public Pedido(Integer id, Date instante, Cliente cliente, Endereco enderecoDeEntrega) {
         super();
@@ -41,6 +49,8 @@ public class Pedido implements Serializable {
         this.cliente = cliente;
         this.enderecoDeEntrega = enderecoDeEntrega;
     }
+
+
 
     public Integer getId() {
         return id;
@@ -89,7 +99,6 @@ public class Pedido implements Serializable {
     public void setItens(Set<ItemPedido> itens) {
         this.itens = itens;
     }
-
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -115,5 +124,6 @@ public class Pedido implements Serializable {
         return true;
     }
 
-}
 
+
+}
