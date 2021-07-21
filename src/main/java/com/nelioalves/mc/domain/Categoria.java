@@ -1,5 +1,7 @@
 package com.nelioalves.mc.domain;
 
+import org.springframework.http.ResponseEntity;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -70,8 +72,7 @@ public class Categoria implements Serializable {
 		return Objects.equals(id, other.id);
 	}
 
-
-		
 	}
 
+		
 
