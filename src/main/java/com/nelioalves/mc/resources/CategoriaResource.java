@@ -2,6 +2,7 @@ package com.nelioalves.mc.resources;
 
 import com.nelioalves.mc.dto.CategoriaDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -56,5 +57,15 @@ public class CategoriaResource {
 		return ResponseEntity.ok().body(listDto);
 	}
 
+	@GetMapping(value = "/page")
+	public ResponseEntity<Page<CategoriaDTO>> findPage(
+			@RequestParam(value = "page", defaultValue = "0") Integer page,
+			@RequestParam(value = "linespage", defaultValue = "24") Integer linesPerPage,
+			@RequestParam(value = "orderby", defaultValue = "nome") String orderBy,
+			@RequestParam(value = "direction", defaultValue = "ASC") String direction) {
+		Page<Categoria> list = service.findPage(page, linesPerPage, orderBy, direction);
+		Page<CategoriaDTO> listDto = list.map(obj -> new CategoriaDTO(obj));
+		return ResponseEntity.ok().body(listDto);
 
+	}
 }
