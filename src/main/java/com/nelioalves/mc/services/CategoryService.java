@@ -1,6 +1,7 @@
 package com.nelioalves.mc.services;
 
 import com.nelioalves.mc.domain.Categoria;
+import com.nelioalves.mc.dto.CategoriaDTO;
 import com.nelioalves.mc.repository.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -51,5 +52,8 @@ public class CategoryService {
 	public Page<Categoria> findPage(Integer page, Integer linesPerPage, String orderBy, String direction)  {
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Sort.Direction.valueOf(direction), orderBy);
 		return repo.findAll(pageRequest);
+	}
+	public Categoria fromDTO(CategoriaDTO objDTO) {
+		return new Categoria(objDTO.getId(), objDTO.getNome());
 	}
 }
