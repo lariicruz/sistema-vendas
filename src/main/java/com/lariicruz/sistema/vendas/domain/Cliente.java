@@ -5,7 +5,10 @@ import com.lariicruz.sistema.vendas.domain.enums.TipoCliente;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Cliente implements Serializable {
